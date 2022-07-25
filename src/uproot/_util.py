@@ -311,8 +311,6 @@ def file_path_to_source_class(file_path, options):
     """
     import uproot.source.chunk
 
-    file_path = regularize_path(file_path)
-
     if (
         not isstr(file_path)
         and hasattr(file_path, "read")
@@ -325,6 +323,8 @@ def file_path_to_source_class(file_path, options):
                 + repr(out)
             )
         return out, file_path
+
+    file_path = regularize_path(file_path)
 
     windows_absolute_path = None
     if win:
