@@ -310,12 +310,13 @@ def file_path_to_source_class(file_path, options):
     Use a file path to get the :doc:`uproot.source.chunk.Source` class that would read it.
     """
     import uproot.source.chunk
-
+    print("1")
     if (
         not isstr(file_path)
         and hasattr(file_path, "read")
         and hasattr(file_path, "seek")
     ):
+        print("2")
         out = options["object_handler"]
         if not (isinstance(out, type) and issubclass(out, uproot.source.chunk.Source)):
             raise TypeError(
@@ -323,7 +324,7 @@ def file_path_to_source_class(file_path, options):
                 + repr(out)
             )
         return out, file_path
-
+    print("3")
     file_path = regularize_path(file_path)
 
     windows_absolute_path = None
